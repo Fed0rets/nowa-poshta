@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Нова пошта — демонстраційний макет</title>
+<style>
+:root{--red:#e52329;--dark-red:#c91820;--ink:#171717;--muted:#475569;--line:#e5e7eb;--soft:#f5f6f8}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;font-family:Arial,Helvetica,sans-serif;color:var(--ink);background:#fff}
+a{color:inherit;text-decoration:none}
+.container{width:min(1120px,90%);margin:auto}
+.demo-note{background:#fff3cd;color:#664d03;text-align:center;padding:9px 14px;font-size:13px;font-weight:700}
+header{display:flex;align-items:center;justify-content:space-between;gap:20px;padding:17px 5%;border-bottom:1px solid #eee}
+.logo{font-size:25px;font-weight:900;letter-spacing:-1px}
+.logo span{color:var(--red)}
+.logo small{display:block;font-size:12px;font-weight:400;letter-spacing:0;color:#64748b;margin-top:3px}
+nav{display:flex;gap:24px;font-size:14px;font-weight:700}
+nav a:hover{color:var(--red)}
+.header-btn,.hero-btn{display:inline-block;background:var(--red);color:white;padding:13px 19px;border-radius:8px;font-weight:700}
+.hero{color:white;padding:88px 5%;background:linear-gradient(115deg,#d71920,#f04449)}
+.hero-inner{max-width:950px;margin:auto}
+.eyebrow{font-size:12px;font-weight:800;letter-spacing:2px;margin:0 0 17px}
+.hero h1{font-size:clamp(42px,7vw,70px);line-height:1.04;margin:0 0 22px;font-weight:900}
+.hero p{font-size:18px;line-height:1.6;max-width:570px;margin:0 0 30px}
+.hero-btn{background:white;color:var(--red)}
+section{padding:60px 5%}
+.section-title{text-align:center;margin:0 auto 35px}
+.section-title h2{font-size:clamp(29px,4vw,38px);margin:0 0 12px;font-weight:900}
+.section-title p{color:var(--muted);margin:0;line-height:1.6}
+.cards{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.service{border:1px solid var(--line);border-radius:14px;padding:25px}
+.service .emoji{font-size:42px;margin-bottom:15px}
+.service h3{font-size:20px;margin:0 0 10px}
+.service p{color:var(--muted);font-size:15px;line-height:1.6;margin:0}
+.about{background:linear-gradient(120deg,#d71920,#ed3c43);color:#fff;text-align:center}
+.about .heart{font-size:46px;margin-bottom:15px}
+.about h2{font-size:clamp(32px,5vw,43px);font-weight:900;margin:0 0 18px}
+.about p{font-size:18px;line-height:1.8;max-width:760px;margin:auto}
+.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin:38px auto 0;max-width:700px}
+.stat strong{display:block;font-size:34px}.stat span{font-size:13px;opacity:.9}
+.prices-intro{text-align:center;margin-bottom:35px}
+.prices-intro h2{font-size:clamp(30px,4vw,39px);margin:0 0 12px}
+.prices-intro p{color:var(--muted)}
+.tariffs{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.tariff{border:2px solid #d1d5db;border-radius:16px;padding:24px;background:#fff;box-shadow:0 4px 13px #0000000d}
+.tariff .emoji{font-size:48px}
+.arrow{font-size:44px;line-height:1;color:var(--red);font-weight:900;margin:12px 0}
+.tariff h3{font-size:25px;font-weight:900;margin:0;color:#111}
+.tariff .desc{font-size:14px;color:#333;line-height:1.5;margin:10px 0}
+.price{font-size:34px;font-weight:900;color:#d71920;margin:15px 0}
+.tariff hr{border:0;border-top:2px solid #ddd;margin:16px 0}
+.rowprice{display:flex;justify-content:space-between;gap:10px;padding:9px 0;font-size:15px;font-weight:700;color:#111}
+.rowprice b{color:#d71920;font-size:16px;white-space:nowrap}
+.price-note{font-size:13px;color:#333;line-height:1.6;margin-top:22px}
+.official-links{display:flex;gap:18px;flex-wrap:wrap;margin-top:18px}
+.official-links a{color:var(--red);font-weight:700;text-decoration:underline;font-size:14px}
+.contact-band{background:#242424;color:white;text-align:center}
+.contact-band .icon{font-size:45px;margin-bottom:16px}
+.contact-band h2{font-size:clamp(32px,5vw,40px);font-weight:900;margin:0 0 18px}
+.contact-band p{font-size:18px;line-height:1.8;max-width:680px;margin:auto;color:#fff}
+.contact-pill{display:inline-block;margin-top:26px;background:var(--red);padding:14px 22px;border-radius:8px;font-weight:700}
+footer{background:#d71920;color:#fff;padding:35px 5%}
+.footer-inner{display:flex;justify-content:space-between;gap:25px;flex-wrap:wrap}
+footer .brand{font-size:25px;font-weight:900}
+footer p{font-size:14px;line-height:1.7;margin:8px 0}
+.copyright{border-top:1px solid #ffffff55;margin-top:25px;padding-top:16px;font-size:12px}
+@media(max-width:760px){
+ nav{display:none}.cards,.tariffs{grid-template-columns:1fr}
+ section{padding:46px 5%}.hero{padding:68px 6%}
+ .tariff{padding:23px}.stats{gap:8px}
+ .stat strong{font-size:28px}
+}
+</style>
+</head>
+<body>
+<div class="demo-note">ДЕМОНСТРАЦІЙНИЙ МАКЕТ ДЛЯ ПОРТФОЛІО — НЕ ОФІЦІЙНИЙ САЙТ НОВОЇ ПОШТИ</div>
+<header>
+  <a class="logo" href="#"><span>НОВА</span> ПОШТА<small>Доставка, що об'єднує</small></a>
+  <nav>
+    <a href="#services">Послуги</a><a href="#about">Про нас</a><a href="#prices">Тарифи</a><a href="#contacts">Контакти</a>
+  </nav>
+  <a class="header-btn" href="#prices">Тарифи</a>
+</header>
+
+<main>
+<section class="hero">
+  <div class="hero-inner">
+    <p class="eyebrow">ДОСТАВЛЯЄМО ПО ВСІЙ УКРАЇНІ</p>
+    <h1>Твій світ.<br>Твоя доставка.</h1>
+    <p>Швидко доставляємо посилки, документи та важливі речі. Де б ти не був — ми поруч.</p>
+    <a class="hero-btn" href="#services">Наші послуги →</a>
+  </div>
+</section>
+
+<section id="services">
+  <div class="section-title"><p class="eyebrow" style="color:var(--red)">НАШІ МОЖЛИВОСТІ</p><h2>Наші послуги</h2><p>Усе необхідне для зручної доставки</p></div>
+  <div class="container cards">
+    <article class="service"><div class="emoji">📦</div><h3>Доставка посилок</h3><p>Надсилання та отримання посилок по Україні.</p></article>
+    <article class="service"><div class="emoji">🚚</div><h3>Кур'єрська доставка</h3><p>Зручна доставка за адресою одержувача.</p></article>
+    <article class="service"><div class="emoji">🌍</div><h3>Міжнародна доставка</h3><p>Відправляйте посилки за кордон.</p></article>
+  </div>
+</section>
+
+<section class="about" id="about">
+  <div class="heart">❤️</div>
+  <h2>Ми завжди поруч</h2>
+  <p>Нова пошта допомагає людям та бізнесу бути ближче. Ми створюємо зручні рішення для доставки та робимо відправлення простішими.</p>
+  <div class="stats">
+    <div class="stat"><strong>24/7</strong><span>Онлайн-сервіси</span></div>
+    <div class="stat"><strong>UA</strong><span>По всій Україні</span></div>
+    <div class="stat"><strong>∞</strong><span>Можливостей</span></div>
+  </div>
+</section>
+
+<section id="prices">
+  <div class="prices-intro"><h2>Доставка без кордонів</h2><p>Оберіть зручний напрямок доставки</p></div>
+  <div class="container tariffs">
+    <article class="tariff">
+      <div class="emoji">🏙️</div><div class="arrow">↓</div>
+      <h3>ПО МІСТУ</h3><p class="desc">Доставка в межах одного міста</p>
+      <div class="price">від 70 ₴</div><hr>
+      <div class="rowprice"><span>До 2 кг</span><b>70 ₴</b></div>
+      <div class="rowprice"><span>До 10 кг</span><b>115 ₴</b></div>
+      <div class="rowprice"><span>До 30 кг</span><b>180 ₴</b></div>
+    </article>
+    <article class="tariff">
+      <div class="emoji">🇺🇦</div><div class="arrow">↓</div>
+      <h3>ПО УКРАЇНІ</h3><p class="desc">Доставка між містами та селами</p>
+      <div class="price">від 90 ₴</div><hr>
+      <div class="rowprice"><span>До 2 кг</span><b>90 ₴</b></div>
+      <div class="rowprice"><span>До 10 кг</span><b>135 ₴</b></div>
+      <div class="rowprice"><span>До 30 кг</span><b>200 ₴</b></div>
+    </article>
+    <article class="tariff">
+      <div class="emoji">🌍</div><div class="arrow">↓</div>
+      <h3>ПО СВІТУ</h3><p class="desc">Міжнародна доставка</p>
+      <div class="price">від 385 ₴</div><hr>
+      <div class="rowprice"><span>Європа</span><b>від 385 ₴</b></div>
+      <div class="rowprice"><span>Китай та Гонконг</span><b>від 2 035 ₴</b></div>
+      <div class="rowprice"><span>Інші країни</span><b>від 2 145 ₴</b></div>
+    </article>
+  </div>
+  <div class="container">
+    <p class="price-note">* Ціни наведені для демонстрації макета та не є підтвердженими актуальними тарифами. Фактична вартість залежить від ваги, габаритів, напрямку й додаткових послуг. Перед публікацією перевірте суми на офіційному сайті.</p>
+    <div class="official-links">
+      <a href="https://novaposhta.ua/shipping-cost/" target="_blank" rel="noopener">Офіційні тарифи по Україні ↗</a>
+      <a href="https://novaposhta.ua/send/international-delivery/shipping-cost/" target="_blank" rel="noopener">Міжнародні тарифи ↗</a>
+    </div>
+  </div>
+</section>
+
+<section class="contact-band">
+  <div class="icon">📞</div>
+  <h2>Завжди на зв'язку</h2>
+  <p>Ми прагнемо зробити кожне відправлення простим, швидким і зручним.</p>
+  <div class="contact-pill">Ми поруч, коли це потрібно!</div>
+</section>
+</main>
+
+<footer id="contacts">
+  <div class="container footer-inner">
+    <div><div class="brand">НОВА ПОШТА</div><p>Доставка, що об'єднує.</p></div>
+    <div><strong>Контакти</strong><p>Гаряча лінія: 0 800 500 609<br>Офіційний сайт: novaposhta.ua</p></div>
+  </div>
+  <div class="container copyright">© Демонстраційний макет. Не є офіційним сайтом Нової пошти.</div>
+</footer>
+</body>
+</html>
